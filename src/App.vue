@@ -99,41 +99,67 @@ export default {
   text-align: center;
   max-width: 600px;
   margin: auto;
-  background: #f8f1e4;
-  color: #333;
-  padding: 20px;
+  background: #2e2b22;
+  color: #f5e6c8;
+  padding: 30px;
   border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  font-family: 'Merriweather', serif;
+  border: 2px solid #c2a97a;
 }
 .title {
-  font-size: 24px;
-  margin-bottom: 15px;
-  font-family: 'Georgia', serif;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #e0c097;
 }
 .quote-box {
-  font-size: 18px;
+  font-size: 20px;
   font-style: italic;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  background: rgba(50, 47, 37, 0.9);
+  border-radius: 10px;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid #b59e77;
+  position: relative;
+}
+.quote-box::before {
+  content: "\201C";
+  font-size: 40px;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  color: #c2a97a;
+}
+.quote-box::after {
+  content: "\201D";
+  font-size: 40px;
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  color: #c2a97a;
 }
 .author {
-  font-size: 16px;
-  margin-top: 10px;
+  font-size: 18px;
+  margin-top: 15px;
   font-weight: bold;
+  color: #e0c097;
 }
 .new-quote-button {
-  background: #6a0572;
+  background: #8b6f47;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 16px;
+  font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: 20px;
+  transition: background 0.3s;
 }
 .new-quote-button:hover {
-  background: #4a034a;
+  background: #a07e5c;
 }
 </style>
