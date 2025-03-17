@@ -1,11 +1,13 @@
 <template>
   <div class="quotes-app">
     <h1 class="title">Philosophical Quotes</h1>
-    <div class="quote-box">
-      <p class="quote">"{{ currentQuote.text }}"</p>
-      <p class="author">- {{ currentQuote.author }}</p>
-      <button @click="getRandomQuote" class="new-quote-button">New Quote</button>
-    </div>
+    <transition name="book-open" mode="out-in">
+        <div :key="currentQuote.text" class="quote-content">
+          <p class="quote">"{{ currentQuote.text }}"</p>
+          <p class="author">- {{ currentQuote.author }}</p>
+        </div>
+      </transition>
+    <button @click="getRandomQuote" class="new-quote-button">New Quote</button>
   </div>
 </template>
 
@@ -95,6 +97,7 @@ export default {
 </script>
 
 <style scoped>
+/* General Styling */
 .quotes-app {
   text-align: center;
   max-width: 600px;
@@ -106,6 +109,7 @@ export default {
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
   font-family: 'Merriweather', serif;
   border: 2px solid #c2a97a;
+  perspective: 1200px; /* Adds depth for the book effect */
 }
 .title {
   font-size: 28px;
@@ -124,22 +128,11 @@ export default {
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
   border: 1px solid #b59e77;
   position: relative;
+  overflow: hidden;
 }
-.quote-box::before {
-  content: "\201C";
-  font-size: 40px;
-  position: absolute;
-  left: 10px;
-  top: 5px;
-  color: #c2a97a;
-}
-.quote-box::after {
-  content: "\201D";
-  font-size: 40px;
-  position: absolute;
-  right: 10px;
-  bottom: 5px;
-  color: #c2a97a;
+.quote-content {
+  transform-origin: center;
+  backface-visibility: hidden;
 }
 .author {
   font-size: 18px;
@@ -161,5 +154,18 @@ export default {
 }
 .new-quote-button:hover {
   background: #a07e5c;
+}
+
+/* BOOK OPEN ANIMATION */
+.book-open-enter-active, .book-open-leave-active {
+  transition: transform 0.6s ease-in-out, opacity 0.6s;
+}
+.book-open-enter-from {
+  transform: rotateY(90deg) scaleX(0.5);
+  opacity: 0;
+}
+.book-open-leave-to {
+  transform: rotateY(-90deg) scaleX(0.5);
+  opacity: 0;
 }
 </style>
